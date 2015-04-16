@@ -1,0 +1,52 @@
+/***********************************************************************************
+ *
+ * @@@ Simple money transaction system using CORBA - java - IDL file definition
+ *  
+ *  @ Method -> Account
+ *          * Account ID
+ *          * Balance
+ *          * Set account ID()
+ *          * Set balance()
+ *  
+ *  @ Method -> Client
+ *          * Client ID
+ *          * User accounts
+ *          * Register user()
+ *          * Delete user()
+ *          * Create an account()
+ *          * Delete an account()
+ *          * Get a List of regitered accounts and balance()
+ *          * Check account balance()
+ *          * Deposit cash()
+ *          * Withdraw cash()
+ *
+ **********************************************************************************/
+
+
+module SMTS
+{
+    interface Account
+    {
+        attribute string accountID;
+        attribute double amount;
+        
+        void setAccountID(inout string accid);
+        void setBalance(inout double value);
+    };
+    
+    interface Client
+    {
+        attribute string ClientID;
+        attribute Account Acc;
+        
+        void createUser(inout string uid);
+        void deleteUser(inout string uid);
+        void createAccount(inout string accid);
+        void deleteAccount(inout string accid);
+        void getAccountList(inout string accid);
+        void checkAccountBalance(inout string accid);
+        void deposit(inout string accid, inout double value);
+        void withdraw(inout string accid, inout double value);
+    };
+    
+};
