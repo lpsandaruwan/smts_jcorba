@@ -2,12 +2,13 @@
  *
  * @@@ Simple money transaction system using CORBA - java - IDL file definition
  *  
- *  @ Method -> Account
- *          * Account ID
+ *  @ Class Account
  *          * Balance
- *          * Set account ID()
- *          * Set balance()
+ *          * Deposit cash()
+ *          * Withdraw cash()
  *  
+ *  @ Class AccountManagement
+ *          * Account check()
  **********************************************************************************/
 
 
@@ -15,11 +16,16 @@ module SMTS
 {
     interface Account
     {
-        attribute string accountID;
-        attribute double balance;
-        
-        void setAccountID(inout string accid);
-        void setBalance(inout double value);
+        readonly attribute double balance;
+        exception InsufficientBalance{};
+        double deposit(in double amount);
+        double withdraw(in double sum) raises (InsufficientBalance);
+    };
+    
+    interface AccountManagement
+    {
+        exception invalidAccount{};
+        Account accountCheck(in long accid ) raises (invalidAccount);
     };
     
 };
