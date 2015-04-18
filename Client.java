@@ -11,8 +11,14 @@ public class Client
     {
       try{
         // create and initialize the ORB
-        ORB orb = ORB.init(args, null);
-
+        String[] orbArgs = new String[3];
+        orbArgs[0] = args[0];
+        orbArgs[1] = args[1];
+        orbArgs[2] = args[2];
+        //orbArgs[3] = args[3];
+        ORB orb = ORB.init(orbArgs, null);
+        
+        //System.out.println(args[4]);
         // get the root naming context
         org.omg.CORBA.Object objRef = 
             orb.resolve_initial_references("NameService");
@@ -25,9 +31,55 @@ public class Client
         accountImpl = AccountHelper.narrow(ncRef.resolve_str(name));
 
         System.out.println("Obtained a handle on server object: " + accountImpl);
-        System.out.println(accountImpl.getBalance());
-        System.out.println(accountImpl.deposit());
-        System.out.println(accountImpl.withdraw());
+        
+        try{
+            switch(args[4]){
+                case "balance":
+                    try{
+                        System.out.format("Balance is %.2f\n", (accountImpl.getBalance("s")));
+                    }
+                    catch(Exception e){
+                        System.out.println("insert account ID");
+                    }
+                    break;
+                /*
+                case "deposit":
+                    try{
+                        acccountImpl.deposit(String.valueof(args[6]));
+                    }
+                    catch(){
+                        System.out.println("Insert deposit amount.");
+                    }
+                    break;
+                    
+                case "withdraw":
+                    try{
+                        accountImpl.withdraw(String.valueof(args[6]));
+                    }
+                    catch(){
+                        System.out.println("Insert withdraw amount.");
+                    }
+                    break;
+                    
+                case "newacc":
+                    try{
+                        System.out.println("new");
+                    }
+                    catch(){
+                        System.out.println("Insert initial amount");
+                    }
+                    break;
+                  */
+                  
+                default:
+                    System.out.println("Client server is operational.");
+                    break;
+            }
+        }catch(Exception e){
+            System.out.println("Input error");
+        }
+        
+        
         accountImpl.shutdown();
 
         } catch (Exception e) {

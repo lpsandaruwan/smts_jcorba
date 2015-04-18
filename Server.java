@@ -7,32 +7,6 @@ import org.omg.PortableServer.POA;
 
 import java.util.Properties;
 
-class AccountImpl extends AccountPOA {
-  private ORB orb;
-
-  public void setORB(ORB orb_val) {
-    orb = orb_val; 
-  }
-    
-  // implement sayHello() method
-  public double getBalance() {
-    return 100.0;
-  }
-  
-  public String deposit(){
-    return "Deposit called\n";
-  }
-  
-  public String withdraw(){
-    return "withdraw called\n";
-  }
-    
-  // implement shutdown() method
-  public void shutdown() {
-    orb.shutdown(false);
-  }
-}
-
 
 public class Server {
 
@@ -75,7 +49,7 @@ public class Server {
         System.err.println("ERROR: " + e);
         e.printStackTrace(System.out);
       }
-          
+
       System.out.println("Server Exit ...");
         
   }

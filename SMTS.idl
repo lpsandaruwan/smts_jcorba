@@ -2,9 +2,9 @@ module SMTS
 {
     interface Account
     {
-        double getBalance();
-        string deposit();
-        string withdraw();
+        double getBalance(in string accID);
+        void deposit(in double amount);
+        void withdraw(in double amount);
         
         oneway void shutdown();
     };
