@@ -1,0 +1,11 @@
+module SMTS
+{
+    interface Account
+    {
+        double getBalance();
+        string deposit();
+        string withdraw();
+        
+        oneway void shutdown();
+    };
+};
