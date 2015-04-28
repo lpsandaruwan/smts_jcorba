@@ -36,31 +36,32 @@ public class Client
             switch(args[4]){
                 case "balance":
                     try{
-                        System.out.format("Balance is %.2f\n", (accountImpl.getBalance("s")));
+                        System.out.format("Balance is %.2f\n", (accountImpl.getBalance("1111")));
                     }
                     catch(Exception e){
                         System.out.println("insert account ID");
                     }
                     break;
-                /*
+                
                 case "deposit":
                     try{
-                        acccountImpl.deposit(String.valueof(args[6]));
+                        accountImpl.deposit(Double.parseDouble(args[5]));
                     }
-                    catch(){
+                    catch(Exception e){
                         System.out.println("Insert deposit amount.");
                     }
                     break;
-                    
+                   
                 case "withdraw":
                     try{
-                        accountImpl.withdraw(String.valueof(args[6]));
+                        accountImpl.withdraw(Double.parseDouble(args[5]));
+                        //System.out.println(args[5]);
                     }
-                    catch(){
+                    catch(Exception e){
                         System.out.println("Insert withdraw amount.");
                     }
                     break;
-                    
+                 /*   
                 case "newacc":
                     try{
                         System.out.println("new");
@@ -80,7 +81,7 @@ public class Client
         }
         
         
-        accountImpl.shutdown();
+        //accountImpl.shutdown();
 
         } catch (Exception e) {
           System.out.println("ERROR : " + e) ;

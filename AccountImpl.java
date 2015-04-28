@@ -9,22 +9,24 @@ import java.util.Properties;
 
 class AccountImpl extends AccountPOA {
   private ORB orb;
-
+  public String id;
+  public double balance;
+  
   public void setORB(ORB orb_val) {
     orb = orb_val; 
   }
-    
+
   // implement sayHello() method
   public double getBalance(String accID) {
-    return 100.0;
+    return this.balance;
   }
   
   public void deposit(double amount){
-    System.out.println("Calld d");
+    this.balance += amount;
   }
   
   public void withdraw(double amount){
-    System.out.println("Calld w");
+    this.balance -= amount;
   }
     
   // implement shutdown() method

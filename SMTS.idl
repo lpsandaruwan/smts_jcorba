@@ -2,6 +2,7 @@ module SMTS
 {
     interface Account
     {
+        
         double getBalance(in string accID);
         void deposit(in double amount);
         void withdraw(in double amount);
